@@ -12,7 +12,8 @@ namespace MiniChat.Database
 
             services.AddDbContext<ChatDbContext>(options =>
             {
-                options.UseNpgsql(connectionString);
+                options.UseNpgsql(connectionString,
+                    options => options.UseNodaTime());
             });
 
             services.AddScoped<ChatDbContext>();

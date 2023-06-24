@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MiniChat.Service.Controllers
+namespace MiniChat.Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]

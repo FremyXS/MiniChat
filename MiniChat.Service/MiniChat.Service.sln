@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniChat.Web", "MiniChat.Service\MiniChat.Web.csproj", "{CFAA0FD3-F89A-4E86-A4E9-8CD8FDFC6249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniChat.Web", "MiniChat.Web\MiniChat.Web.csproj", "{CFAA0FD3-F89A-4E86-A4E9-8CD8FDFC6249}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniChat.Database", "MiniChat.Database\MiniChat.Database.csproj", "{5F0F37A8-B5DB-4D6E-9D10-38E06EBE351F}"
 EndProject

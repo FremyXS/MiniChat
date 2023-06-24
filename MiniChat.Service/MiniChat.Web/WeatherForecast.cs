@@ -1,4 +1,4 @@
-namespace MiniChat.Service
+namespace MiniChat.Web
 {
     public class WeatherForecast
     {

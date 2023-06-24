@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniChat.Models.Request
 {
-    public class UserRequest
+    public class UserUpdateRequest
     {
         public string Name { get; set; }
     }

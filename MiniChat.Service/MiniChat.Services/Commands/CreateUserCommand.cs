@@ -1,5 +1,6 @@
 ﻿using MiniChat.Database;
 using MiniChat.Database.Entity;
+using MiniChat.Models.Mappers;
 using MiniChat.Models.Request;
 using MiniChat.Service.Commands.Interface;
 using System;
@@ -21,9 +22,8 @@ namespace MiniChat.Service.Commands
 
         public async Task<int> Invoke(UserCreateRequest userRequest)
         {
-            var user = new User();
-            user.Name = userRequest.Name;
-            user.SetCreateTime();
+            var user = userRequest.ToModel();
+            user = user.SetCreateTime();
 
             await _chatDbContext.AddAsync(user);
             var res = await _chatDbContext.SaveChangesAsync();

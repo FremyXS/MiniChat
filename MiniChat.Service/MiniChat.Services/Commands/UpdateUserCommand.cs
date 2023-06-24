@@ -29,6 +29,7 @@ namespace MiniChat.Service.Commands
             }
 
             user.Name = userUpdateRequest.Name;
+            user.Photo = userUpdateRequest.Photo;
 
             _chatDbContext.Update(user);
             var res = await _chatDbContext.SaveChangesAsync();

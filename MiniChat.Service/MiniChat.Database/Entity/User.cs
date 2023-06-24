@@ -10,10 +10,15 @@ namespace MiniChat.Database.Entity
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? DeleteDate { get; set; } = null;
-        public ICollection<ChatRoom> ChatRooms { get; set; }
-        public ICollection<Message> Messages { get; set; }
+        public ICollection<ChatRoom>? ChatRooms { get; set; }
+        public ICollection<Message>? Messages { get; set; }
+
+        public void SetCreateTime()
+        {
+            CreateDate = DateTime.UtcNow;
+        }
     }
 }

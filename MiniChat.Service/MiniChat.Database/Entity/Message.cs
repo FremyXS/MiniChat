@@ -15,5 +15,7 @@ namespace MiniChat.Database.Entity
         public DateTime? DeleteDate { get; set; } = null;
         public long ChatRoomId { get; set; }
         public ChatRoom ChatRoom { get; set; }
+        public long UserId { get; set; }
+        public User User { get; set; }
     }
 }

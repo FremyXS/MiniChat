@@ -13,6 +13,7 @@ namespace MiniChat.Database.Entity
         public string? Photo { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? DeleteDate { get; set; } = null;
+        public ICollection<User> Users { get; set; }
         public ICollection<Message>? Messages { get; set; }
     }
 }

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MiniChat.Database\MiniChat.Database.csproj" />
+    <ProjectReference Include="..\MiniChat.Services\MiniChat.Service.csproj" />
   </ItemGroup>
 
 </Project>

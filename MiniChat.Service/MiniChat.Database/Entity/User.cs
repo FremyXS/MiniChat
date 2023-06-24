@@ -16,9 +16,16 @@ namespace MiniChat.Database.Entity
         public ICollection<ChatRoom>? ChatRooms { get; set; }
         public ICollection<Message>? Messages { get; set; }
 
-        public void SetCreateTime()
+        public User SetCreateTime()
         {
             CreateDate = DateTime.UtcNow;
+            return this;
+        }
+
+        public User SetDeleteDate()
+        {
+            DeleteDate = DateTime.UtcNow;
+            return this;
         }
     }
 }

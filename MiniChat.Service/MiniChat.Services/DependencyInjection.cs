@@ -11,6 +11,7 @@ namespace MiniChat.Services
     {
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddTransient<IDeleteUserCommand, DeleteUserCommand>();
             services.AddTransient<IGetUsersCommand, GetUsersCommand>();
             services.AddTransient<ICreateUserCommand, CreateUserCommand>();
             services.AddTransient<IUserService, UserService>();

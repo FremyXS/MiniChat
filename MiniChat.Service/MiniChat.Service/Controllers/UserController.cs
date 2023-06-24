@@ -40,10 +40,11 @@ namespace MiniChat.Web.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteUser()
+        [HttpDelete("{id:long}")]
+        public async Task<IActionResult> DeleteUser([FromRoute] long id)
         {
-            return Ok();
+            var res = await _userService.DeleteUser(id);
+            return Ok(res);
         }
     }
 }

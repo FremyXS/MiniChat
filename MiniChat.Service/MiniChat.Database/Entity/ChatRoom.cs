@@ -15,5 +15,17 @@ namespace MiniChat.Database.Entity
         public DateTime? DeleteDate { get; set; } = null;
         public ICollection<User> Users { get; set; }
         public ICollection<Message>? Messages { get; set; }
+
+        public ChatRoom SetCreateTime()
+        {
+            CreateDate = DateTime.UtcNow;
+            return this;
+        }
+
+        public ChatRoom SetDeleteDate()
+        {
+            DeleteDate = DateTime.UtcNow;
+            return this;
+        }
     }
 }

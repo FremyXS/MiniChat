@@ -9,5 +9,6 @@ namespace MiniChat.Models.Request
     public class UserUpdateRequest
     {
         public string Name { get; set; }
+        public string? Photo { get; set; }
     }
 }

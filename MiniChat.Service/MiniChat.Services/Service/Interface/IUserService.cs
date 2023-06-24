@@ -11,6 +11,7 @@ namespace MiniChat.Services.Service.Interface
     public interface IUserService
     {
         Task<ICollection<User>> GetUsers();
+        Task<User> GetUserById(long userId);
         Task<int> CreateUser(UserRequest userRequest);
         Task<int> DeleteUser(long userId);
     }

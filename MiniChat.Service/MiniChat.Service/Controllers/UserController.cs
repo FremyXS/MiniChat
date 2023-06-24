@@ -24,7 +24,8 @@ namespace MiniChat.Web.Controllers
         [HttpGet("{id:long}")]
         public async Task<IActionResult> GetUserById([FromRoute] long id)
         {
-            return Ok();
+            var res = await _userService.GetUserById(id);
+            return Ok(res);
         }
 
         [HttpPost]

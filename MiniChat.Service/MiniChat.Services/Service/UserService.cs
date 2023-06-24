@@ -15,19 +15,27 @@ namespace MiniChat.Services.Service
         private readonly IGetUsersCommand _getUsersCommand;
         private readonly ICreateUserCommand _createUserCommand;
         private readonly IDeleteUserCommand _deleteUserCommand;
+        private readonly IGetUserByIdCommand _getUserByIdCommand;
         public UserService(
             IGetUsersCommand getUsersCommand,
             ICreateUserCommand createUserCommand,
-            IDeleteUserCommand deleteUserCommand) 
+            IDeleteUserCommand deleteUserCommand,
+            IGetUserByIdCommand getUserByIdCommand) 
         { 
             _getUsersCommand = getUsersCommand;
             _createUserCommand = createUserCommand;
             _deleteUserCommand = deleteUserCommand;
+            _getUserByIdCommand = getUserByIdCommand;
         }
 
         public async Task<ICollection<User>> GetUsers()
         {
             return await _getUsersCommand.Invoke();
+        }
+
+        public async Task<User> GetUserById(long userId)
+        {
+            return await _getUserByIdCommand.Invoke(userId);
         }
 
         public async Task<int> CreateUser(UserRequest userRequest)

@@ -9,6 +9,6 @@ namespace MiniChat.Service.Commands.Interface
 {
     public interface ICreateUserCommand
     {
-        Task<int> Invoke(UserRequest userRequest);
+        Task<int> Invoke(UserCreateRequest userRequest);
     }
 }

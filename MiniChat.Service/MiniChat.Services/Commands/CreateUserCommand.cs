@@ -19,7 +19,7 @@ namespace MiniChat.Service.Commands
             _chatDbContext = chatDbContext;
         }
 
-        public async Task<int> Invoke(UserRequest userRequest)
+        public async Task<int> Invoke(UserCreateRequest userRequest)
         {
             var user = new User();
             user.Name = userRequest.Name;

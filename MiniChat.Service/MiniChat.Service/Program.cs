@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using MiniChat.Database;
+using MiniChat.Models;
 using MiniChat.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +11,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddModels();
 builder.Services.AddPersistence(builder.Configuration);
-builder.Services.AddServices(builder.Configuration);
+builder.Services.AddServices();
 
 var app = builder.Build();
 

@@ -16,16 +16,19 @@ namespace MiniChat.Services.Service
         private readonly ICreateUserCommand _createUserCommand;
         private readonly IDeleteUserCommand _deleteUserCommand;
         private readonly IGetUserByIdCommand _getUserByIdCommand;
+        private readonly IUpdateUserCommand _updateUserCommand;
         public UserService(
             IGetUsersCommand getUsersCommand,
             ICreateUserCommand createUserCommand,
             IDeleteUserCommand deleteUserCommand,
-            IGetUserByIdCommand getUserByIdCommand) 
+            IGetUserByIdCommand getUserByIdCommand,
+            IUpdateUserCommand updateUserCommand) 
         { 
             _getUsersCommand = getUsersCommand;
             _createUserCommand = createUserCommand;
             _deleteUserCommand = deleteUserCommand;
             _getUserByIdCommand = getUserByIdCommand;
+            _updateUserCommand = updateUserCommand;
         }
 
         public async Task<ICollection<User>> GetUsers()
@@ -38,9 +41,14 @@ namespace MiniChat.Services.Service
             return await _getUserByIdCommand.Invoke(userId);
         }
 
-        public async Task<int> CreateUser(UserRequest userRequest)
+        public async Task<int> CreateUser(UserCreateRequest userRequest)
         {
             return await _createUserCommand.Invoke(userRequest);
+        }
+
+        public async Task<int> UpdateUser(long userId, UserUpdateRequest userUpdateRequest)
+        {
+            return await _updateUserCommand.Invoke(userId, userUpdateRequest);
         }
 
         public async Task<int> DeleteUser(long userId)

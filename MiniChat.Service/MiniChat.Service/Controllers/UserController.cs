@@ -29,16 +29,17 @@ namespace MiniChat.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] UserRequest userRequest)
+        public async Task<IActionResult> CreateUser([FromBody] UserCreateRequest userRequest)
         {
             var res = await _userService.CreateUser(userRequest);
             return Ok(res);
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> UpdateUser()
+        [HttpPatch("{id:long}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] long id, [FromBody] UserUpdateRequest userUpdateRequest)
         {
-            return Ok();
+            var res = await _userService.UpdateUser(id, userUpdateRequest);
+            return Ok(res);
         }
 
         [HttpDelete("{id:long}")]

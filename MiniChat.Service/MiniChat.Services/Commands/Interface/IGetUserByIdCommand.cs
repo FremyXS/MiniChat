@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MiniChat.Models.Dto;
 
 namespace MiniChat.Service.Commands.Interface
 {
     public interface IGetUserByIdCommand
     {
-        Task<Database.Entity.User> Invoke(long userId);
+        Task<UserDto> Invoke(long userId);
     }
 }

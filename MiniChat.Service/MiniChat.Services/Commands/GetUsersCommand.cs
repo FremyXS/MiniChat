@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiniChat.Database;
-using MiniChat.Database.Entity;
+using MiniChat.Models.Dto;
+using MiniChat.Models.Mappers;
 using MiniChat.Service.Commands.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiniChat.Service.Commands
 {
@@ -19,9 +15,10 @@ namespace MiniChat.Service.Commands
             _chatDbContext = chatDbContext;
         }
 
-        public async Task<ICollection<User>> Invoke()
+        public async Task<ICollection<UserDto>> Invoke()
         {
-            var users = await _chatDbContext.Users.ToListAsync();
+            var users = await _chatDbContext.Users.Select(el => el.ToDto())
+                .ToListAsync();
             return users;
         }
     }

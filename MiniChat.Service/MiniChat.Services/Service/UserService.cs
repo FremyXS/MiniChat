@@ -1,12 +1,7 @@
-﻿using MiniChat.Database.Entity;
+﻿using MiniChat.Models.Dto;
 using MiniChat.Models.Request;
 using MiniChat.Service.Commands.Interface;
 using MiniChat.Services.Service.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiniChat.Services.Service
 {
@@ -31,12 +26,12 @@ namespace MiniChat.Services.Service
             _updateUserCommand = updateUserCommand;
         }
 
-        public async Task<ICollection<User>> GetUsers()
+        public async Task<ICollection<UserDto>> GetUsers()
         {
             return await _getUsersCommand.Invoke();
         }
 
-        public async Task<User> GetUserById(long userId)
+        public async Task<UserDto> GetUserById(long userId)
         {
             return await _getUserByIdCommand.Invoke(userId);
         }

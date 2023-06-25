@@ -27,6 +27,13 @@ namespace MiniChat.Services
             services.AddTransient<IDeleteChatRoomCommand, DeleteChatRoomCommand>();
             services.AddTransient<IChatRoomService, ChatRoomService>();
 
+            services.AddTransient<IGetMessageById, GetMessageById>();
+            services.AddTransient<IGetMessagesByChatIdCommand, GetMessagesByChatIdCommand>();
+            services.AddTransient<ICreateMessageCommand, CreateMessageCommand>();
+            services.AddTransient<IUpdateMessageCommand, UpdateMessageCommand>();
+            services.AddTransient<IDeleteMessageCommand, DeleteMessageCommand>();
+            services.AddTransient<IMessageService, MessageService>();
+
             return services;
         }
     }

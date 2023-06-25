@@ -13,10 +13,14 @@ namespace MiniChat.Service.Commands
     public class UpdateChatRoomCommand: IUpdateChatRoomCommand
     {
         private readonly ChatDbContext _chatDbContext;
+        private readonly IGetUsersByIdArrayCommand _getUsersByIdArrayCommand;
 
-        public UpdateChatRoomCommand(ChatDbContext chatDbContext)
+        public UpdateChatRoomCommand(
+            ChatDbContext chatDbContext,
+            IGetUsersByIdArrayCommand getUsersByIdArrayCommand)
         {
             _chatDbContext = chatDbContext;
+            _getUsersByIdArrayCommand = getUsersByIdArrayCommand;
         }
 
         public async Task<int> Invoke(long id, ChatRoomUpdateRequest chatRoomUpdateRequest)
@@ -30,16 +34,7 @@ namespace MiniChat.Service.Commands
                 throw new Exception($"Chat room not found with id: {id}");
             }
 
-            var users = await _chatDbContext.Users.ToListAsync();
-
-            var findUsers = users
-                .Where(el => chatRoomUpdateRequest.UsersId.Contains(el.Id))
-                .ToList();
-
-            if (findUsers.Count() != chatRoomUpdateRequest.UsersId.Length)
-            {
-                throw new Exception($"Not all users in the id set were found {string.Join(',', chatRoomUpdateRequest.UsersId)}");
-            }
+            var findUsers = await _getUsersByIdArrayCommand.Invoke(chatRoomUpdateRequest.UsersId);
 
             chat.Title = chatRoomUpdateRequest.Title;
             chat.Photo = chatRoomUpdateRequest.Photo;

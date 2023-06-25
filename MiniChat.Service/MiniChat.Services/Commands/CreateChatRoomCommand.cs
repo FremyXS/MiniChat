@@ -17,20 +17,17 @@ namespace MiniChat.Service.Commands
     public class CreateChatRoomCommand: ICreateChatRoomCommand
     {
         private readonly ChatDbContext _chatDbContext;
-        public CreateChatRoomCommand(ChatDbContext chatDbContext) 
+        private readonly IGetUsersByIdArrayCommand _getUsersByIdArrayCommand;
+        public CreateChatRoomCommand(
+            ChatDbContext chatDbContext,
+            IGetUsersByIdArrayCommand getUsersByIdArrayCommand) 
         {
             _chatDbContext = chatDbContext;
+            _getUsersByIdArrayCommand = getUsersByIdArrayCommand;
         }
         public async Task<int> Invoke(ChatRoomCreateRequest chatRoomCreateRequest)
         {
-            var users = await _chatDbContext.Users.ToListAsync();
-
-            var findUsers = users.Where(el => chatRoomCreateRequest.UsersId.Contains(el.Id)).ToList();
-
-            if (findUsers.Count() != chatRoomCreateRequest.UsersId.Length) 
-            {
-                throw new Exception($"Not all users in the id set were found {string.Join(',', chatRoomCreateRequest.UsersId)}");
-            }
+            var findUsers = await _getUsersByIdArrayCommand.Invoke(chatRoomCreateRequest.UsersId);
 
             var chatRoom = chatRoomCreateRequest.ToModel();
             chatRoom.Users = findUsers;

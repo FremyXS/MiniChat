@@ -12,21 +12,19 @@ namespace MiniChat.Service.Commands
     public class DeleteChatRoomCommand: IDeleteChatRoomCommand
     {
         private readonly ChatDbContext _chatDbContext;
+        private readonly IGetChatRoomByIdCommand _getChatRoomByIdCommand;
 
-        public DeleteChatRoomCommand(ChatDbContext chatDbContext)
+        public DeleteChatRoomCommand(
+            ChatDbContext chatDbContext,
+            IGetChatRoomByIdCommand getChatRoomByIdCommand)
         {
             _chatDbContext = chatDbContext;
+            _getChatRoomByIdCommand = getChatRoomByIdCommand;
         }
 
         public async Task<int> Invoke(long id)
         {
-            var chat = await _chatDbContext.ChatRooms
-                .FirstOrDefaultAsync(el => el.Id == id);
-
-            if (chat == null)
-            {
-                throw new Exception($"Chat room not found with id: {id}");
-            }
+            var chat = await _getChatRoomByIdCommand.Invoke(id);
 
             chat = chat.SetDeleteDate();
 

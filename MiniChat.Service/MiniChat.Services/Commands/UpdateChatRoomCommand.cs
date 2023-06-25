@@ -14,25 +14,21 @@ namespace MiniChat.Service.Commands
     {
         private readonly ChatDbContext _chatDbContext;
         private readonly IGetUsersByIdArrayCommand _getUsersByIdArrayCommand;
+        private readonly IGetChatRoomByIdCommand _getChatRoomByIdCommand;
 
         public UpdateChatRoomCommand(
             ChatDbContext chatDbContext,
-            IGetUsersByIdArrayCommand getUsersByIdArrayCommand)
+            IGetUsersByIdArrayCommand getUsersByIdArrayCommand,
+            IGetChatRoomByIdCommand getChatRoomByIdCommand)
         {
             _chatDbContext = chatDbContext;
             _getUsersByIdArrayCommand = getUsersByIdArrayCommand;
+            _getChatRoomByIdCommand = getChatRoomByIdCommand;
         }
 
         public async Task<int> Invoke(long id, ChatRoomUpdateRequest chatRoomUpdateRequest)
         {
-            var chat = await _chatDbContext.ChatRooms
-                .Include(el => el.Users)
-                .FirstOrDefaultAsync(el => el.Id == id);
-
-            if (chat == null)
-            {
-                throw new Exception($"Chat room not found with id: {id}");
-            }
+            var chat = await _getChatRoomByIdCommand.Invoke(id);
 
             var findUsers = await _getUsersByIdArrayCommand.Invoke(chatRoomUpdateRequest.UsersId);
 

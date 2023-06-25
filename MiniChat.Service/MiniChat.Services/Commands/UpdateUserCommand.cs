@@ -13,20 +13,19 @@ namespace MiniChat.Service.Commands
     public class UpdateUserCommand: IUpdateUserCommand
     {
         private readonly ChatDbContext _chatDbContext;
+        private readonly IGetUserByIdCommand _getUserByIdCommand;
 
-        public UpdateUserCommand(ChatDbContext chatDbContext)
+        public UpdateUserCommand(
+            ChatDbContext chatDbContext, 
+            IGetUserByIdCommand getUserByIdCommand)
         {
             _chatDbContext = chatDbContext;
+            _getUserByIdCommand = getUserByIdCommand;
         }
 
         public async Task<int> Invoke(long userId, UserUpdateRequest userUpdateRequest)
         {
-            var user = await _chatDbContext.Users.FirstOrDefaultAsync(el => el.Id == userId);
-
-            if (user == null)
-            {
-                throw new Exception($"User is not found by id: {userId}");
-            }
+            var user = await _getUserByIdCommand.Invoke(userId);
 
             user.Name = userUpdateRequest.Name;
             user.Photo = userUpdateRequest.Photo;

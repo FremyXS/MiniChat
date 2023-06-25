@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiniChat.Database;
+using MiniChat.Database.Entity;
 using MiniChat.Models.Dto;
 using MiniChat.Models.Mappers;
 using MiniChat.Service.Commands.Interface;
@@ -20,9 +21,11 @@ namespace MiniChat.Service.Commands
             _chatDbContext = chatDbContext;
         }
 
-        public async Task<ChatRoomDto> Invoke(long id)
+        public async Task<ChatRoom> Invoke(long id)
         {
             var chat = await _chatDbContext.ChatRooms
+                .Include(el => el.Users)
+                .Include(el => el.Messages)
                 .FirstOrDefaultAsync(el => el.Id == id);
 
             if (chat == null)
@@ -30,7 +33,7 @@ namespace MiniChat.Service.Commands
                 throw new Exception($"Chat room not found with id: {id}");
             }
 
-            return chat.ToDto();
+            return chat;
         }
     }
 }

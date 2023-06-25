@@ -46,7 +46,9 @@ namespace MiniChat.Service.Service
         }
         public async Task<ChatRoomDto> GetChatRoomById(long id)
         {
-            return await _getChatRoomByIdCommand.Invoke(id);
+            var res = await _getChatRoomByIdCommand.Invoke(id);
+
+            return res.ToDto();
         }
         public async Task<int> CreateChatRoom(ChatRoomCreateRequest chatRoomCreateRequest)
         {

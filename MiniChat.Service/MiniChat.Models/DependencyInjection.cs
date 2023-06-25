@@ -9,6 +9,8 @@ namespace MiniChat.Models
         {
             services.AddScoped<UserCreateRequestValidator>();
             services.AddScoped<UserUpdateRequestValidator>();
+            services.AddScoped<ChatRoomCreateRequestValidator>();
+            services.AddScoped<ChatRoomUpdateRequestValidator>();
 
             return services;
         }

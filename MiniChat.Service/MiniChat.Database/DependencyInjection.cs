@@ -12,7 +12,7 @@ namespace MiniChat.Database
 
             services.AddDbContext<ChatDbContext>(options =>
             {
-                options.UseNpgsql(connectionString,
+                options.UseNpgsql("Server=localhost;Port=6789;Database=MiniChatDataBase;Username=postgres;Password=123456",
                     options => options.UseNodaTime());
             });
 

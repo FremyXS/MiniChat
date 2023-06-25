@@ -26,7 +26,7 @@ namespace MiniChat.Service.Commands
         {
             var chat = await _getChatRoomByIdCommand.Invoke(id);
 
-            chat = chat.SetDeleteDate();
+            chat.SetDeleteDate();
 
             _chatDbContext.Update(chat);
 

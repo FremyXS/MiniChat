@@ -26,7 +26,7 @@ namespace MiniChat.Service.Commands
         {
             var message = await _getMessageById.Invoke(id);
 
-            message = message.SetDeleteDate();
+            message.SetDeleteDate();
             _chatDbContext.Update(message);
 
             var res = await _chatDbContext.SaveChangesAsync();

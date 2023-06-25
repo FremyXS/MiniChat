@@ -23,7 +23,7 @@ namespace MiniChat.Service.Commands
         public async Task<int> Invoke(UserCreateRequest userRequest)
         {
             var user = userRequest.ToModel();
-            user = user.SetCreateTime();
+            user.SetCreateTime();
 
             await _chatDbContext.AddAsync(user);
             var res = await _chatDbContext.SaveChangesAsync();

@@ -24,8 +24,9 @@ namespace MiniChat.Service.Commands
         public async Task<int> Invoke(long userId)
         {
             var user = await _getUserByIdCommand.Invoke(userId);
+            user.SetDeleteDate();
 
-            _chatDbContext.Update(user.SetDeleteDate());
+            _chatDbContext.Update(user);
             var res = await _chatDbContext.SaveChangesAsync();
 
             return res;

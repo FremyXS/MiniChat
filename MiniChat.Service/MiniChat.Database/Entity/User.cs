@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniChat.Database.Entity.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,26 +7,11 @@ using System.Threading.Tasks;
 
 namespace MiniChat.Database.Entity
 {
-    public class User
+    public class User : EntityBase
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public string? Photo { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? DeleteDate { get; set; } = null;
         public ICollection<ChatRoom>? ChatRooms { get; set; }
         public ICollection<Message>? Messages { get; set; }
-
-        public User SetCreateTime()
-        {
-            CreateDate = DateTime.UtcNow;
-            return this;
-        }
-
-        public User SetDeleteDate()
-        {
-            DeleteDate = DateTime.UtcNow;
-            return this;
-        }
     }
 }

@@ -36,7 +36,7 @@ namespace MiniChat.Service.Commands
             var message = messageCreateRequest.ToModel();
             message.ChatRoom = chat;
             message.User = user;
-            message = message.SetCreateTime();
+            message.SetCreateTime();
 
             await _chatDbContext.Messages.AddAsync(message);
 

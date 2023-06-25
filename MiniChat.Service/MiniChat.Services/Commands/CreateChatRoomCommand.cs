@@ -31,7 +31,7 @@ namespace MiniChat.Service.Commands
 
             var chatRoom = chatRoomCreateRequest.ToModel();
             chatRoom.Users = findUsers;
-            chatRoom = chatRoom.SetCreateTime();
+            chatRoom.SetCreateTime();
 
             await _chatDbContext.ChatRooms.AddAsync(chatRoom);
 

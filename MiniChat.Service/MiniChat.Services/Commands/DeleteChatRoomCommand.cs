@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MiniChat.Service.Commands
 {
-    public class DeleteChatRoom: IDeleteChatRoom
+    public class DeleteChatRoomCommand: IDeleteChatRoomCommand
     {
         private readonly ChatDbContext _chatDbContext;
 
-        public DeleteChatRoom(ChatDbContext chatDbContext)
+        public DeleteChatRoomCommand(ChatDbContext chatDbContext)
         {
             _chatDbContext = chatDbContext;
         }

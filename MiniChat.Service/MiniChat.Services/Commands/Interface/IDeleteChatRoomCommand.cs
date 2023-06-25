@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniChat.Service.Commands.Interface
 {
-    public interface IDeleteChatRoom
+    public interface IDeleteChatRoomCommand
     {
         Task<int> Invoke(long id);
     }

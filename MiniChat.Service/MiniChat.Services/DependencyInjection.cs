@@ -24,7 +24,7 @@ namespace MiniChat.Services
             services.AddTransient<IGetChatRoomByIdCommand, GetChatRoomByIdCommand>();
             services.AddTransient<ICreateChatRoomCommand, CreateChatRoomCommand>();
             services.AddTransient<IUpdateChatRoomCommand, UpdateChatRoomCommand>();
-            services.AddTransient<IDeleteChatRoom, DeleteChatRoom>();
+            services.AddTransient<IDeleteChatRoomCommand, DeleteChatRoomCommand>();
             services.AddTransient<IChatRoomService, ChatRoomService>();
 
             return services;

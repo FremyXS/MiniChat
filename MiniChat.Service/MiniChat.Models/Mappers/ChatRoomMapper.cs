@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using MiniChat.Database.Entity;
+using MiniChat.Models.Dto;
 using MiniChat.Models.Request;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace MiniChat.Models.Mappers
         public static ChatRoom ToModel(this ChatRoomCreateRequest chatRoomCreateRequest)
         {
             return chatRoomCreateRequest.Adapt<ChatRoom>();
+        }
+
+        public static ChatRoomDto ToDto(this ChatRoom chatRoom)
+        {
+            return chatRoom.Adapt<ChatRoomDto>();
         }
     }
 }

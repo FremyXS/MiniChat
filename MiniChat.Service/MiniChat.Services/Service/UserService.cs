@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MiniChat.Models.Dto;
+using MiniChat.Models.Mappers;
 using MiniChat.Models.Request;
 using MiniChat.Models.Validators;
 using MiniChat.Service.Commands.Interface;
@@ -41,7 +42,8 @@ namespace MiniChat.Services.Service
 
         public async Task<UserDto> GetUserById(long userId)
         {
-            return await _getUserByIdCommand.Invoke(userId);
+            var res = await _getUserByIdCommand.Invoke(userId);
+            return res.ToDto();
         }
 
         public async Task<int> CreateUser(UserCreateRequest userRequest)

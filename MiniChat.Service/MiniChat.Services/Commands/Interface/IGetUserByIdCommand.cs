@@ -1,9 +1,9 @@
-﻿using MiniChat.Models.Dto;
+﻿using MiniChat.Database.Entity;
 
 namespace MiniChat.Service.Commands.Interface
 {
     public interface IGetUserByIdCommand
     {
-        Task<UserDto> Invoke(long userId);
+        Task<User> Invoke(long userId);
     }
 }

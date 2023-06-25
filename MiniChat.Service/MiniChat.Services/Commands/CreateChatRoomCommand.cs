@@ -25,7 +25,7 @@ namespace MiniChat.Service.Commands
         {
             var users = await _chatDbContext.Users.ToListAsync();
 
-            var findUsers = users.Where(el => chatRoomCreateRequest.UsersId.Contains(el.Id));
+            var findUsers = users.Where(el => chatRoomCreateRequest.UsersId.Contains(el.Id)).ToList();
 
             if (findUsers.Count() != chatRoomCreateRequest.UsersId.Length) 
             {
@@ -33,7 +33,7 @@ namespace MiniChat.Service.Commands
             }
 
             var chatRoom = chatRoomCreateRequest.ToModel();
-            chatRoom.Users = users;
+            chatRoom.Users = findUsers;
             chatRoom = chatRoom.SetCreateTime();
 
             await _chatDbContext.ChatRooms.AddAsync(chatRoom);

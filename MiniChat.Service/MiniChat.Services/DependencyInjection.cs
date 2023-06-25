@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MiniChat.Service.Commands;
-using MiniChat.Service.Commands.Interface;
-using MiniChat.Service.Service;
-using MiniChat.Service.Service.Interface;
-using MiniChat.Services.Service;
-using MiniChat.Services.Service.Interface;
+using MiniChat.Service.ChatRoom;
+using MiniChat.Service.ChatRoom.Commands;
+using MiniChat.Service.ChatRoom.Common;
+using MiniChat.Service.Message;
+using MiniChat.Service.Message.Commands;
+using MiniChat.Service.Message.Common;
+using MiniChat.Service.User;
+using MiniChat.Service.User.Commands;
+using MiniChat.Service.User.Common;
 
 namespace MiniChat.Services
 {

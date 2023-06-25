@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniChat.Models.Request;
-using MiniChat.Services.Service.Interface;
+using MiniChat.Service.User.Common;
 
 namespace MiniChat.Web.Controllers
 {

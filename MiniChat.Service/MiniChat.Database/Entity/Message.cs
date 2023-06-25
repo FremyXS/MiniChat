@@ -17,5 +17,17 @@ namespace MiniChat.Database.Entity
         public ChatRoom ChatRoom { get; set; }
         public long UserId { get; set; }
         public User User { get; set; }
+
+        public Message SetCreateTime()
+        {
+            CreateDate = DateTime.UtcNow;
+            return this;
+        }
+
+        public Message SetDeleteDate()
+        {
+            DeleteDate = DateTime.UtcNow;
+            return this;
+        }
     }
 }

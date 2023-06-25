@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MiniChat.Models.Dto
 {
-    public class ChatRoomDto
-    {
-        public long Id { get; set; }
-        public string Title { get; set; }
-        public string? Photo { get; set; }
-        public DateTime CreateDate { get; set; }
-    }
+    public record class ChatRoomDto(
+        long Id,
+        string Title,
+        string? Photo,
+        DateTime CreateDate
+    );
 }

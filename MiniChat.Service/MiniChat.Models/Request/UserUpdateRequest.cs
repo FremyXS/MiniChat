@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiniChat.Models.Request
+﻿namespace MiniChat.Models.Request
 {
-    public class UserUpdateRequest
-    {
-        public string Name { get; set; }
-        public string? Photo { get; set; }
-    }
+    public record class UserUpdateRequest(string Name, string? Photo);
 }

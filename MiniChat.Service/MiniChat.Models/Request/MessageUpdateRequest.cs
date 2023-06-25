@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiniChat.Models.Request
+﻿namespace MiniChat.Models.Request
 {
-    public class MessageUpdateRequest
-    {
-        public string Text { get; set; }
-    }
+    public record class MessageUpdateRequest(string Text);
 }

@@ -50,7 +50,7 @@ namespace MiniChat.Service.Authentication
             services.AddTransient<IVerifyPasswordHashCommand, VerifyPasswordHashCommand>();
             services.AddTransient<ICreatePasswordHashCommand, CreatePasswordHashCommand>();
             services.AddTransient<ICreateAccountCommand, CreateAccountCommand>();
-            services.AddTransient<IAuthenticateAccount, AuthenticateAccount>();
+            services.AddTransient<IAuthenticateAccountCommand, AuthenticateAccountCommand>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
 
             return services;

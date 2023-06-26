@@ -2,7 +2,7 @@
 
 namespace MiniChat.Service.Authentication.Common
 {
-    public interface IAuthenticateAccount
+    public interface IAuthenticateAccountCommand
     {
         Task<string> Invoke(AccountAuthenticateRequest accountAuthenticateRequest);
     }

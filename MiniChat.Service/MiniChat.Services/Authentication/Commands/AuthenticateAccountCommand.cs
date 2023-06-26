@@ -5,13 +5,13 @@ using MiniChat.Service.Authentication.Common;
 
 namespace MiniChat.Service.Authentication.Commands
 {
-    public class AuthenticateAccount: IAuthenticateAccount
+    public class AuthenticateAccountCommand: IAuthenticateAccountCommand
     {
         private readonly ChatDbContext _chatDbContext;
         private readonly IVerifyPasswordHashCommand _verifyPasswordHashCommand;
         private readonly ICreateJwtTokenCommand _createJwtTokenCommand;
 
-        public AuthenticateAccount(
+        public AuthenticateAccountCommand(
             ChatDbContext chatDbContext,
             IVerifyPasswordHashCommand verifyPasswordHashCommand,
             ICreateJwtTokenCommand createJwtTokenCommand)

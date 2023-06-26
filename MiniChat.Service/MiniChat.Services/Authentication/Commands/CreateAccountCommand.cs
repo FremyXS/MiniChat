@@ -32,12 +32,11 @@ namespace MiniChat.Service.Authentication.Commands
 
             var user = accountCreateRequest.ToUserModel();
             user.SetCreateTime();
-            var account = accountCreateRequest.ToModel();
+            var userEntity = await _chatDbContext.Users.AddAsync(user);
 
+            var account = accountCreateRequest.ToModel();
             account.PasswordHash = passwordHash;
             account.PasswordSalt = passwordSalt;
-
-            var userEntity = await _chatDbContext.Users.AddAsync(user);
             account.UserId = userEntity.Entity.Id;
             account.User = userEntity.Entity;
             account.SetCreateTime();

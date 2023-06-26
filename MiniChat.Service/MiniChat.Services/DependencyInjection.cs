@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using MiniChat.Service.Authentication;
+using MiniChat.Service.Authentication.Commands;
+using MiniChat.Service.Authentication.Common;
 using MiniChat.Service.ChatRoom;
 using MiniChat.Service.ChatRoom.Commands;
 using MiniChat.Service.ChatRoom.Common;
@@ -13,7 +17,7 @@ namespace MiniChat.Services
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddServices(this IServiceCollection services , IConfiguration configuration)
         {
             services.AddTransient<IUpdateUserCommand, UpdateUserCommand>();
             services.AddTransient<IGetUserByIdCommand, GetUserByIdCommand>();
@@ -36,6 +40,8 @@ namespace MiniChat.Services
             services.AddTransient<IUpdateMessageCommand, UpdateMessageCommand>();
             services.AddTransient<IDeleteMessageCommand, DeleteMessageCommand>();
             services.AddTransient<IMessageService, MessageService>();
+
+            services.AddJwtAuth(configuration);
 
             return services;
         }

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MiniChat.Models.Request;
 using MiniChat.Service.ChatRoom.Common;
 
 namespace MiniChat.Web.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class ChatRoomController: ControllerBase
     {

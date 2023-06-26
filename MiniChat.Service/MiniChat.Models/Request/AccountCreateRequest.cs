@@ -5,6 +5,6 @@
         string Login,
         string Password,
         string UserName,
-        string UserPhoto
+        string? UserPhoto
     );
 }
